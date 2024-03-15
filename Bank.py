@@ -25,8 +25,9 @@ import pandas as pd
 
 # In[9]:
 
+button_clicked = st.button("Click me!")
 
-
+if button_clicked:
 
 st.title('Streamlit Example')
 
