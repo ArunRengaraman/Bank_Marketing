@@ -1,12 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import streamlit as st 
 import numpy as np 
-
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
@@ -16,36 +9,24 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
-
-
-
 from sklearn.metrics import accuracy_score
 import pandas as pd
-
-
-# In[9]:
-
-button_clicked = st.button("Click me!")
-
-if button_clicked:
 
 st.title('Streamlit Example')
 
 st.write("""
-# Explore different classifier and datasets
+# Explore different classifiers and datasets
 Which one is the best?
 """)
 
 dataset_name = st.sidebar.selectbox(
-    "Select Dataset",("Bank Marketing","Dummy"))
+    "Select Dataset", ("Bank Marketing", "Dummy"))
 
 st.write(f"## {dataset_name} Dataset")
 
 classifier_name = st.sidebar.selectbox(
-    'Select classifier',
-    ('GB', 'SVM', 'Random Forest')
+    'Select classifier', ('GB', 'SVM', 'Random Forest')
 )
-
 
 def get_dataset(name):
     data = None
@@ -93,7 +74,8 @@ def get_classifier(clf_name, params):
     return clf
 
 clf = get_classifier(classifier_name, params)
-#### CLASSIFICATION ####
+
+st.write(f'Classifier = {classifier_name}')
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -102,7 +84,6 @@ y_pred = clf.predict(X_test)
 
 acc = accuracy_score(y_test, y_pred)
 
-st.write(f'Classifier = {classifier_name}')
 st.write(f'Accuracy =', acc)
 
 st.write('Enter the values for prediction')
@@ -147,25 +128,28 @@ contact_code = st.selectbox("CONTACT", options=list(contact_options.keys()))
 month_code = st.selectbox("MONTH", options=list(month_options.keys()))
 poutcome_code = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
 
-# Get numerical values corresponding to the selected categorical options
-job = job_options.get(job_code)
-marital = marital_options.get(marital_code)
-education = education_options.get(education_code)
-housing = housing_options.get(housing_code)
-default = default_options.get(default_code)
-loan = loan_options.get(loan_code)
-contact = contact_options.get(contact_code)
-month = month_options.get(month_code)
-poutcome = poutcome_options.get(poutcome_code)
+# Add a button to trigger the model prediction
+if st.button("Run Model"):
+    # Get numerical values corresponding to the selected categorical options
+    job = job_options.get(job_code)
+    marital = marital_options.get(marital_code)
+    education = education_options.get(education_code)
+    housing = housing_options.get(housing_code)
+    default = default_options.get(default_code)
+    loan = loan_options.get(loan_code)
+    contact = contact_options.get(contact_code)
+    month = month_options.get(month_code)
+    poutcome = poutcome_options.get(poutcome_code)
 
+    # Prepare the input data for prediction
+    client_data = [age, job, marital, education, default, balance, housing,loan, contact, day, month, duration, campaign, pdays,previous, poutcome]
+    data= np.array(list(client_data)).reshape(1,-1)
 
+    # Make prediction
+    prediction = clf.predict(data)
 
-
-client_data = [age, job, marital, education, default, balance, housing,loan, contact, day, month, duration, campaign, pdays,previous, poutcome]
-data= np.array(list(client_data)).reshape(1,-1)
-
-clf.predict(data)
-if clf.predict(data)[0] == 1:
-    st.write("The client subscribed a term deposit")
-else:
-    st.write("No subscribed a term deposit")
+    # Display prediction result
+    if prediction[0] == 1:
+        st.write("The client subscribed to a term deposit.")
+    else:
+        st.write("The client did not subscribe to a term deposit.")
