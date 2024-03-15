@@ -66,7 +66,7 @@ def add_parameter_ui(clf_name):
         hidden_layer_sizes = st.sidebar.slider('Hidden Layer Sizes (MLP)', 24,128)
         activation = st.sidebar.selectbox('Activation Function (MLP)', ['identity', 'logistic', 'tanh', 'relu'])
         solver = st.sidebar.selectbox('Solver (MLP)', ['lbfgs', 'sgd', 'adam'])
-        params['hidden_layer_sizes'] = tuple(map(int, hidden_layer_sizes.split(',')))
+        params['hidden_layer_sizes'] = hidden_layer_sizes
         params['activation'] = activation
         params['solver'] = solver
     return params
