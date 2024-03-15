@@ -138,32 +138,15 @@ month_options = {'apr': 0, 'aug': 1, 'dec': 2, 'feb': 3, 'jan': 4, 'jul': 5,
 poutcome_options = {'failure': 0, 'other': 1, 'success': 2, 'unknown': 3}
 
 # Get the selected values for each categorical variable
-job = st.selectbox("JOB", options=list(job_options.keys()))
-job_code = job_options.get(job)
-
-marital = st.selectbox("MARITAL", options=list(marital_options.keys()))
-marital_code = marital_options.get(marital)
-
-education = st.selectbox("EDUCATION", options=list(education_options.keys()))
-education_code = education_options.get(education)
-
-housing = st.selectbox("HOUSING", options=list(housing_options.keys()))
-housing_code = housing_options.get(housing)
-
-default = st.selectbox("DEFAULT", options=list(default_options.keys()))
-default_code = default_options.get(default)
-
-loan = st.selectbox("LOAN", options=list(loan_options.keys()))
-loan_code = loan_options.get(loan)
-
-contact = st.selectbox("CONTACT", options=list(contact_options.keys()))
-contact_code = contact_options.get(contact)
-
-month = st.selectbox("MONTH", options=list(month_options.keys()))
-month_code = month_options.get(month)
-
-poutcome = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
-poutcome_code = poutcome_options.get(poutcome)
+job = st.selectbox("JOB", options=list(job_options.values()))
+marital = st.selectbox("MARITAL", options=list(marital_options.values()))
+education = st.selectbox("EDUCATION", options=list(education_options.values()))
+housing = st.selectbox("HOUSING", options=list(housing_options.values()))
+default = st.selectbox("DEFAULT", options=list(default_options.values()))
+loan = st.selectbox("LOAN", options=list(loan_options.values()))
+contact = st.selectbox("CONTACT", options=list(contact_options.values()))
+month = st.selectbox("MONTH", options=list(month_options.values()))
+poutcome = st.selectbox("POUTCOME", options=list(poutcome_options.values()))
 
 
 
