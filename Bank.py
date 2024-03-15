@@ -55,8 +55,8 @@ def get_dataset(name):
     for values in objList:
         data[values] = le.fit_transform(data[values].astype(str))
         data = data
-    X = data.iloc[:, 1:-1]
-    y = data.iloc[:,-1]         
+    X = data.iloc[:, :-1]
+    y = data.iloc[:, -1]
     return X, y
 
 X, y = get_dataset(dataset_name)
