@@ -49,14 +49,14 @@ classifier_name = st.sidebar.selectbox(
 def get_dataset(name):
     data = None
     name == 'Bank Marketing'
-    data = pd.read_csv('bank-full.csv')
+    data = pd.read_csv('bank/bank-full.csv', delimiter=";")
     objList = data.select_dtypes(include = "object").columns
     le = LabelEncoder()
     for values in objList:
         data[values] = le.fit_transform(data[values].astype(str))
         data = data
-    X = data.iloc[:, :-1]
-    y = data.iloc[:, -1]
+    X = data.loc[:, data.columns != 'y']
+    y = data.loc[:, data.columns == 'y']
     return X, y
 
 X, y = get_dataset(dataset_name)
