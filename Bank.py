@@ -136,26 +136,26 @@ month_options = {'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
 poutcome_options = {'failure': 0, 'other': 1, 'success': 2, 'unknown': 3}
 
 # Display dropdown menus with categorical options
-job = st.selectbox("JOB", options=list(job_options.keys()))
-marital = st.selectbox("MARITAL", options=list(marital_options.keys()))
-education = st.selectbox("EDUCATION", options=list(education_options.keys()))
-housing = st.selectbox("HOUSING", options=list(housing_options.keys()))
-default = st.selectbox("DEFAULT", options=list(default_options.keys()))
-loan = st.selectbox("LOAN", options=list(loan_options.keys()))
-contact = st.selectbox("CONTACT", options=list(contact_options.keys()))
-month = st.selectbox("MONTH", options=list(month_options.keys()))
-poutcome = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
+job_code = st.selectbox("JOB", options=list(job_options.keys()))
+marital_code = st.selectbox("MARITAL", options=list(marital_options.keys()))
+education_code = st.selectbox("EDUCATION", options=list(education_options.keys()))
+housing_code = st.selectbox("HOUSING", options=list(housing_options.keys()))
+default_code = st.selectbox("DEFAULT", options=list(default_options.keys()))
+loan_code = st.selectbox("LOAN", options=list(loan_options.keys()))
+contact_code = st.selectbox("CONTACT", options=list(contact_options.keys()))
+month_code = st.selectbox("MONTH", options=list(month_options.keys()))
+poutcome_code = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
 
 # Get numerical values corresponding to the selected categorical options
-job_code = job_options.get(job)
-marital_code = marital_options.get(marital)
-education_code = education_options.get(education)
-housing_code = housing_options.get(housing)
-default_code = default_options.get(default)
-loan_code = loan_options.get(loan)
-contact_code = contact_options.get(contact)
-month_code = month_options.get(month)
-poutcome_code = poutcome_options.get(poutcome)
+job = job_options.get(job)
+marital = marital_options.get(marital)
+education = education_options.get(education)
+housing = housing_options.get(housing)
+default = default_options.get(default)
+loan = loan_options.get(loan)
+contact = contact_options.get(contact)
+month = month_options.get(month)
+poutcome = poutcome_options.get(poutcome)
 
 
 
