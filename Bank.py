@@ -128,6 +128,9 @@ education = st.selectbox("EDUCATION", options=education_options)
 housing_options = ['yes', 'no']
 housing = st.selectbox("HOUSING", options=housing_options)
 
+default_options = ['yes', 'no']
+default = st.selectbox("DEFAULT", options=default_options)
+
 loan_options = ['no', 'yes']
 loan = st.selectbox("LOAN", options=loan_options)
 
