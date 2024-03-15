@@ -147,15 +147,15 @@ month_code = st.selectbox("MONTH", options=list(month_options.keys()))
 poutcome_code = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
 
 # Get numerical values corresponding to the selected categorical options
-job = job_options.get(job)
-marital = marital_options.get(marital)
-education = education_options.get(education)
-housing = housing_options.get(housing)
-default = default_options.get(default)
-loan = loan_options.get(loan)
-contact = contact_options.get(contact)
-month = month_options.get(month)
-poutcome = poutcome_options.get(poutcome)
+job = job_options.get(job_code)
+marital = marital_options.get(marital_code)
+education = education_options.get(education_code)
+housing = housing_options.get(housing_code)
+default = default_options.get(default_code)
+loan = loan_options.get(loan_code)
+contact = contact_options.get(contact_code)
+month = month_options.get(month_code)
+poutcome = poutcome_options.get(poutcome_code)
 
 
 
