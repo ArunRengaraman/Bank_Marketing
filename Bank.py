@@ -46,32 +46,46 @@ X, y = get_dataset(dataset_name)
 def add_parameter_ui(clf_name):
     params = dict()
     if clf_name == 'SVM':
-        C = st.sidebar.slider('C', 0.01, 10.0)
+        C = st.sidebar.slider('C (SVM)', 0.01, 10.0)
+        kernel = st.sidebar.selectbox('Kernel (SVM)', ['linear', 'poly', 'rbf', 'sigmoid'])
         params['C'] = C
+        params['kernel'] = kernel
     elif clf_name == 'GB':
-        max_depth = st.sidebar.slider('max_depth', 2, 15)
+        max_depth = st.sidebar.slider('max_depth (GB)', 2, 15)
+        n_estimators = st.sidebar.slider('n_estimators (GB)', 1, 100)
+        learning_rate = st.sidebar.slider('learning_rate (GB)', 0.01, 1.0, 0.1)
         params['max_depth'] = max_depth
-        n_estimators = st.sidebar.slider('n_estimators', 1, 100)
         params['n_estimators'] = n_estimators
-    else:
-        max_depth = st.sidebar.slider('max_depth', 2, 15)
+        params['learning_rate'] = learning_rate
+    elif clf_name == 'Random Forest':
+        max_depth = st.sidebar.slider('max_depth (Random Forest)', 2, 15)
+        n_estimators = st.sidebar.slider('n_estimators (Random Forest)', 1, 100)
         params['max_depth'] = max_depth
-        n_estimators = st.sidebar.slider('n_estimators', 1, 100)
         params['n_estimators'] = n_estimators
+    elif clf_name == 'MLP':
+        hidden_layer_sizes = st.sidebar.text_input('Hidden Layer Sizes (MLP)', '100,')
+        activation = st.sidebar.selectbox('Activation Function (MLP)', ['identity', 'logistic', 'tanh', 'relu'])
+        solver = st.sidebar.selectbox('Solver (MLP)', ['lbfgs', 'sgd', 'adam'])
+        params['hidden_layer_sizes'] = tuple(map(int, hidden_layer_sizes.split(',')))
+        params['activation'] = activation
+        params['solver'] = solver
     return params
-
-params = add_parameter_ui(classifier_name)
 
 def get_classifier(clf_name, params):
     clf = None
     if clf_name == 'SVM':
-        clf = SVC(C=params['C'])
+        clf = SVC(C=params['C'], kernel=params['kernel'])
     elif clf_name == 'GB':
-        clf = GradientBoostingClassifier(n_estimators=params['n_estimators'],max_depth=params['max_depth'],random_state=1234)
-    else:
-        clf = clf = RandomForestClassifier(n_estimators=params['n_estimators'], 
-            max_depth=params['max_depth'], random_state=1234)
+        clf = GradientBoostingClassifier(n_estimators=params['n_estimators'], max_depth=params['max_depth'], 
+                                         learning_rate=params['learning_rate'], random_state=1234)
+    elif clf_name == 'Random Forest':
+        clf = RandomForestClassifier(n_estimators=params['n_estimators'], max_depth=params['max_depth'], 
+                                     random_state=1234)
+    elif clf_name == 'MLP':
+        clf = MLPClassifier(hidden_layer_sizes=params['hidden_layer_sizes'], activation=params['activation'],
+                            solver=params['solver'], random_state=1234)
     return clf
+
 
 clf = get_classifier(classifier_name, params)
 
