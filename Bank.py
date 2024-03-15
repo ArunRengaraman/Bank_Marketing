@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 import streamlit as st 
 import numpy as np 
@@ -22,56 +17,36 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
 
-
-# In[9]:
-
-
-
-
-st.title('Streamlit Example')
-
-st.write("""
-# Explore different classifier and datasets
-Which one is the best?
-""")
-
-dataset_name = st.sidebar.selectbox(
-    "Select Dataset",("Bank","Dummy"))
-
-st.write(f"## {dataset_name} Dataset")
-
-classifier_name = st.sidebar.selectbox(
-    'Select classifier',
-    ('GB', 'SVM', 'Random Forest')
-)
-
-
+# Load data function
 def get_dataset(name):
     data = None
-    name == 'Bank Marketing'
-    data = pd.read_csv('bank-full.csv')
-    objList = data.select_dtypes(include = "object").columns
-    le = LabelEncoder()
-    for values in objList:
-        data[values] = le.fit_transform(data[values].astype(str))
-        data = data
-    X = data.iloc[:, :-1]
-    y = data.iloc[:, -1]
-    return X, y
+    if name == 'Bank':
+        data = pd.read_csv('bank-full.csv')
+        objList = data.select_dtypes(include = "object").columns
+        le = LabelEncoder()
+        for values in objList:
+            data[values] = le.fit_transform(data[values].astype(str))
+    elif name == 'Dummy':
+        data = datasets.load_iris()  # Load dummy data for testing, replace with your actual dummy data
+    return data
 
-X, y = get_dataset(dataset_name)
+# Sidebar selections
+dataset_name = st.sidebar.selectbox("Select Dataset", ("Bank", "Dummy"))
 
+# Get dataset
+data = get_dataset(dataset_name)
+
+# Prepare X, y
+X = data.iloc[:, :-1]
+y = data.iloc[:, -1]
+
+# Classifier selection
+classifier_name = st.sidebar.selectbox('Select classifier', ('GB',))
+
+# Add parameter UI
 def add_parameter_ui(clf_name):
     params = dict()
-    if clf_name == 'SVM':
-        C = st.sidebar.slider('C', 0.01, 10.0)
-        params['C'] = C
-    elif clf_name == 'GB':
-        max_depth = st.sidebar.slider('max_depth', 2, 15)
-        params['max_depth'] = max_depth
-        n_estimators = st.sidebar.slider('n_estimators', 1, 100)
-        params['n_estimators'] = n_estimators
-    else:
+    if clf_name == 'GB':
         max_depth = st.sidebar.slider('max_depth', 2, 15)
         params['max_depth'] = max_depth
         n_estimators = st.sidebar.slider('n_estimators', 1, 100)
@@ -80,30 +55,26 @@ def add_parameter_ui(clf_name):
 
 params = add_parameter_ui(classifier_name)
 
+# Get classifier
 def get_classifier(clf_name, params):
-    clf = None
-    if clf_name == 'SVM':
-        clf = SVC(C=params['C'])
-    elif clf_name == 'GB':
-        clf = GradientBoostingClassifier(n_estimators=params['n_estimators'],max_depth=params['max_depth'],random_state=1234)
-    else:
-        clf = clf = RandomForestClassifier(n_estimators=params['n_estimators'], 
-            max_depth=params['max_depth'], random_state=1234)
-    return clf
+    if clf_name == 'GB':
+        return GradientBoostingClassifier(n_estimators=params['n_estimators'],
+                                          max_depth=params['max_depth'],
+                                          random_state=1234)
 
+# Train and evaluate classifier
 clf = get_classifier(classifier_name, params)
-#### CLASSIFICATION ####
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
 clf.fit(X_train, y_train)
 y_pred = clf.predict(X_test)
-
 acc = accuracy_score(y_test, y_pred)
 
+# Display accuracy
 st.write(f'Classifier = {classifier_name}')
 st.write(f'Accuracy =', acc)
 
+# Client data input
 st.write('Enter the values for prediction')
 age = st.number_input("AGE")
 balance = st.number_input("BALANCE")
@@ -141,13 +112,13 @@ month = st.selectbox("MONTH", options=month_options)
 poutcome_options = ['unknown', 'failure', 'other', 'success']
 poutcome = st.selectbox("POUTCOME", options=poutcome_options)
 
-client_data = [age, job, marital, education, default, balance, housing,
-       loan, contact, day, month, duration, campaign, pdays,
-       previous, poutcome]
-data= np.array(list(client_data)).reshape(1,-1)
+# Predict client data
+client_data = np.array([age, balance, day, duration, campaign, pdays, previous])
+client_data = np.append(client_data, [job, marital, education, housing, loan, contact, month, poutcome])
+client_data = client_data.reshape(1, -1)
 
-clf.predict(data)
-if clf.predict(data)[0] == 1:
+prediction = clf.predict(client_data)
+if prediction == 1:
     st.write("The client subscribed a term deposit")
 else:
     st.write("No subscribed a term deposit")
