@@ -115,54 +115,56 @@ previous = st.number_input("PREVIOUS")
 
 # Categorical columns
 # Define mapping of numeric codes to categories for each categorical variable
-job_options = {0: 'admin.', 1: 'blue-collar', 2: 'entrepreneur', 3: 'housemaid',
-               4: 'management', 5: 'retired', 6: 'self-employed', 7: 'services',
-               8: 'student', 9: 'technician', 10: 'unemployed', 11: 'unknown'}
+# Define mapping of categories to numeric codes for each categorical variable
+job_options = {'admin.': 0, 'blue-collar': 1, 'entrepreneur': 2, 'housemaid': 3,
+               'management': 4, 'retired': 5, 'self-employed': 6, 'services': 7,
+               'student': 8, 'technician': 9, 'unemployed': 10, 'unknown': 11}
 
-marital_options = {0: 'divorced', 1: 'married', 2: 'single'}
+marital_options = {'divorced': 0, 'married': 1, 'single': 2}
 
-education_options = {0: 'primary', 1: 'secondary', 2: 'tertiary', 3: 'unknown'}
+education_options = {'primary': 0, 'secondary': 1, 'tertiary': 2, 'unknown': 3}
 
-housing_options = {0: 'no', 1: 'yes'}
+housing_options = {'no': 0, 'yes': 1}
 
-default_options = {0: 'no', 1: 'yes'}
+default_options = {'no': 0, 'yes': 1}
 
-loan_options = {0: 'no', 1: 'yes'}
+loan_options = {'no': 0, 'yes': 1}
 
-contact_options = {0: 'cellular', 1: 'telephone', 2: 'unknown'}
+contact_options = {'cellular': 0, 'telephone': 1, 'unknown': 2}
 
-month_options = {0: 'apr', 1: 'aug', 2: 'dec', 3: 'feb', 4: 'jan', 5: 'jul',
-                 6: 'jun', 7: 'mar', 8: 'may', 9: 'nov', 10: 'oct', 11: 'sep'}
+month_options = {'apr': 0, 'aug': 1, 'dec': 2, 'feb': 3, 'jan': 4, 'jul': 5,
+                 'jun': 6, 'mar': 7, 'may': 8, 'nov': 9, 'oct': 10, 'sep': 11}
 
-poutcome_options = {0: 'failure', 1: 'other', 2: 'success', 3: 'unknown'}
+poutcome_options = {'failure': 0, 'other': 1, 'success': 2, 'unknown': 3}
 
 # Get the selected values for each categorical variable
-job_code = st.selectbox("JOB", options=list(job_options.keys()))
-job = job_options.get(job_code)
+job = st.selectbox("JOB", options=list(job_options.keys()))
+job_code = job_options.get(job)
 
-marital_code = st.selectbox("MARITAL", options=list(marital_options.keys()))
-marital = marital_options.get(marital_code)
+marital = st.selectbox("MARITAL", options=list(marital_options.keys()))
+marital_code = marital_options.get(marital)
 
-education_code = st.selectbox("EDUCATION", options=list(education_options.keys()))
-education = education_options.get(education_code)
+education = st.selectbox("EDUCATION", options=list(education_options.keys()))
+education_code = education_options.get(education)
 
-housing_code = st.selectbox("HOUSING", options=list(housing_options.keys()))
-housing = housing_options.get(housing_code)
+housing = st.selectbox("HOUSING", options=list(housing_options.keys()))
+housing_code = housing_options.get(housing)
 
-default_code = st.selectbox("DEFAULT", options=list(default_options.keys()))
-default = default_options.get(default_code)
+default = st.selectbox("DEFAULT", options=list(default_options.keys()))
+default_code = default_options.get(default)
 
-loan_code = st.selectbox("LOAN", options=list(loan_options.keys()))
-loan = loan_options.get(loan_code)
+loan = st.selectbox("LOAN", options=list(loan_options.keys()))
+loan_code = loan_options.get(loan)
 
-contact_code = st.selectbox("CONTACT", options=list(contact_options.keys()))
-contact = contact_options.get(contact_code)
+contact = st.selectbox("CONTACT", options=list(contact_options.keys()))
+contact_code = contact_options.get(contact)
 
-month_code = st.selectbox("MONTH", options=list(month_options.keys()))
-month = month_options.get(month_code)
+month = st.selectbox("MONTH", options=list(month_options.keys()))
+month_code = month_options.get(month)
 
-poutcome_code = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
-poutcome = poutcome_options.get(poutcome_code)
+poutcome = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
+poutcome_code = poutcome_options.get(poutcome)
+
 
 
 client_data = [age, job, marital, education, default, balance, housing,loan, contact, day, month, duration, campaign, pdays,previous, poutcome]
