@@ -65,60 +65,66 @@ def get_classifier(clf_name, params):
 # Train and evaluate classifier
 clf = get_classifier(classifier_name, params)
 
+if dataset_name == 'Bank':
+    # Drop the target column from X
+    X = data.drop(columns=[data.columns[-1]])
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-clf.fit(X_train, y_train)
-y_pred = clf.predict(X_test)
-acc = accuracy_score(y_test, y_pred)
 
-# Display accuracy
-st.write(f'Classifier = {classifier_name}')
-st.write(f'Accuracy =', acc)
+if dataset_name == 'Bank':
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+    acc = accuracy_score(y_test, y_pred)
 
-# Client data input
-st.write('Enter the values for prediction')
-age = st.number_input("AGE")
-balance = st.number_input("BALANCE")
-day = st.number_input("DAY")
-duration = st.number_input("DURATION")
-campaign = st.number_input("CAMPAIGN")
-pdays = st.number_input("PDAYS")
-previous = st.number_input("PREVIOUS")
+    # Display accuracy
+    st.write(f'Classifier = {classifier_name}')
+    st.write(f'Accuracy =', acc)
 
-# Categorical columns
-job_options = ['management', 'technician', 'entrepreneur', 'blue-collar',
-               'unknown', 'retired', 'admin.', 'services', 'self-employed',
-               'unemployed', 'housemaid', 'student']
-job = st.selectbox("JOB", options=job_options)
+    # Client data input
+    st.write('Enter the values for prediction')
+    age = st.number_input("AGE")
+    balance = st.number_input("BALANCE")
+    day = st.number_input("DAY")
+    duration = st.number_input("DURATION")
+    campaign = st.number_input("CAMPAIGN")
+    pdays = st.number_input("PDAYS")
+    previous = st.number_input("PREVIOUS")
 
-marital_options = ['married', 'single', 'divorced']
-marital = st.selectbox("MARITAL", options=marital_options)
+    # Categorical columns
+    job_options = ['management', 'technician', 'entrepreneur', 'blue-collar',
+                'unknown', 'retired', 'admin.', 'services', 'self-employed',
+                'unemployed', 'housemaid', 'student']
+    job = st.selectbox("JOB", options=job_options)
 
-education_options = ['tertiary', 'secondary', 'unknown', 'primary']
-education = st.selectbox("EDUCATION", options=education_options)
+    marital_options = ['married', 'single', 'divorced']
+    marital = st.selectbox("MARITAL", options=marital_options)
 
-housing_options = ['yes', 'no']
-housing = st.selectbox("HOUSING", options=housing_options)
+    education_options = ['tertiary', 'secondary', 'unknown', 'primary']
+    education = st.selectbox("EDUCATION", options=education_options)
 
-loan_options = ['no', 'yes']
-loan = st.selectbox("LOAN", options=loan_options)
+    housing_options = ['yes', 'no']
+    housing = st.selectbox("HOUSING", options=housing_options)
 
-contact_options = ['unknown', 'cellular', 'telephone']
-contact = st.selectbox("CONTACT", options=contact_options)
+    loan_options = ['no', 'yes']
+    loan = st.selectbox("LOAN", options=loan_options)
 
-month_options = ['may', 'jun', 'jul', 'aug', 'oct', 'nov', 'dec', 'jan', 'feb',
-                 'mar', 'apr', 'sep']
-month = st.selectbox("MONTH", options=month_options)
+    contact_options = ['unknown', 'cellular', 'telephone']
+    contact = st.selectbox("CONTACT", options=contact_options)
 
-poutcome_options = ['unknown', 'failure', 'other', 'success']
-poutcome = st.selectbox("POUTCOME", options=poutcome_options)
+    month_options = ['may', 'jun', 'jul', 'aug', 'oct', 'nov', 'dec', 'jan', 'feb',
+                    'mar', 'apr', 'sep']
+    month = st.selectbox("MONTH", options=month_options)
 
-# Predict client data
-client_data = np.array([age, balance, day, duration, campaign, pdays, previous])
-client_data = np.append(client_data, [job, marital, education, housing, loan, contact, month, poutcome])
-client_data = client_data.reshape(1, -1)
+    poutcome_options = ['unknown', 'failure', 'other', 'success']
+    poutcome = st.selectbox("POUTCOME", options=poutcome_options)
 
-prediction = clf.predict(client_data)
-if prediction == 1:
-    st.write("The client subscribed a term deposit")
-else:
-    st.write("No subscribed a term deposit")
+    # Predict client data
+    client_data = np.array([age, balance, day, duration, campaign, pdays, previous])
+    client_data = np.append(client_data, [job, marital, education, housing, loan, contact, month, poutcome])
+    client_data = client_data.reshape(1, -1)
+
+    prediction = clf.predict(client_data)
+    if prediction == 1:
+        st.write("The client subscribed a term deposit")
+    else:
+        st.write("No subscribed a term deposit")
