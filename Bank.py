@@ -86,7 +86,10 @@ def get_classifier(clf_name, params):
                             solver=params['solver'], random_state=1234)
     return clf
 
+# Obtain parameters
+params = add_parameter_ui(classifier_name)
 
+# Get classifier using the obtained parameters
 clf = get_classifier(classifier_name, params)
 
 st.write(f'Classifier = {classifier_name}')
