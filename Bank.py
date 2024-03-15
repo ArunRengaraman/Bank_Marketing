@@ -113,40 +113,50 @@ campaign = st.number_input("CAMPAIGN")
 pdays = st.number_input("PDAYS")
 previous = st.number_input("PREVIOUS")
 
-# Categorical columns
-# Define mapping of numeric codes to categories for each categorical variable
-# Define mapping of categories to numeric codes for each categorical variable
-job_options = {'admin.': 0, 'blue-collar': 1, 'entrepreneur': 2, 'housemaid': 3,
-               'management': 4, 'retired': 5, 'self-employed': 6, 'services': 7,
-               'student': 8, 'technician': 9, 'unemployed': 10, 'unknown': 11}
+# Mapping of textual options to numeric codes for each categorical variable
+job_options = {'management': 1, 'technician': 2, 'entrepreneur': 3, 'blue-collar': 4,
+               'unknown': 5, 'retired': 6, 'admin.': 7, 'services': 8, 'self-employed': 9,
+               'unemployed': 10, 'housemaid': 11, 'student': 12}
 
-marital_options = {'divorced': 0, 'married': 1, 'single': 2}
+marital_options = {'married': 1, 'single': 2, 'divorced': 3}
 
-education_options = {'primary': 0, 'secondary': 1, 'tertiary': 2, 'unknown': 3}
+education_options = {'tertiary': 1, 'secondary': 2, 'unknown': 3, 'primary': 4}
 
-housing_options = {'no': 0, 'yes': 1}
+housing_options = {'yes': 1, 'no': 0}
 
-default_options = {'no': 0, 'yes': 1}
+default_options = {'yes': 1, 'no': 0}
 
 loan_options = {'no': 0, 'yes': 1}
 
-contact_options = {'cellular': 0, 'telephone': 1, 'unknown': 2}
+contact_options = {'unknown': 0, 'cellular': 1, 'telephone': 2}
 
-month_options = {'apr': 0, 'aug': 1, 'dec': 2, 'feb': 3, 'jan': 4, 'jul': 5,
-                 'jun': 6, 'mar': 7, 'may': 8, 'nov': 9, 'oct': 10, 'sep': 11}
+month_options = {'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
+                 'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12}
 
 poutcome_options = {'failure': 0, 'other': 1, 'success': 2, 'unknown': 3}
 
-# Get the selected values for each categorical variable
-job = st.selectbox("JOB", options=list(job_options.values()))
-marital = st.selectbox("MARITAL", options=list(marital_options.values()))
-education = st.selectbox("EDUCATION", options=list(education_options.values()))
-housing = st.selectbox("HOUSING", options=list(housing_options.values()))
-default = st.selectbox("DEFAULT", options=list(default_options.values()))
-loan = st.selectbox("LOAN", options=list(loan_options.values()))
-contact = st.selectbox("CONTACT", options=list(contact_options.values()))
-month = st.selectbox("MONTH", options=list(month_options.values()))
-poutcome = st.selectbox("POUTCOME", options=list(poutcome_options.values()))
+# Display dropdown menus with categorical options
+job = st.selectbox("JOB", options=list(job_options.keys()))
+marital = st.selectbox("MARITAL", options=list(marital_options.keys()))
+education = st.selectbox("EDUCATION", options=list(education_options.keys()))
+housing = st.selectbox("HOUSING", options=list(housing_options.keys()))
+default = st.selectbox("DEFAULT", options=list(default_options.keys()))
+loan = st.selectbox("LOAN", options=list(loan_options.keys()))
+contact = st.selectbox("CONTACT", options=list(contact_options.keys()))
+month = st.selectbox("MONTH", options=list(month_options.keys()))
+poutcome = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
+
+# Get numerical values corresponding to the selected categorical options
+job_code = job_options.get(job)
+marital_code = marital_options.get(marital)
+education_code = education_options.get(education)
+housing_code = housing_options.get(housing)
+default_code = default_options.get(default)
+loan_code = loan_options.get(loan)
+contact_code = contact_options.get(contact)
+month_code = month_options.get(month)
+poutcome_code = poutcome_options.get(poutcome)
+
 
 
 
