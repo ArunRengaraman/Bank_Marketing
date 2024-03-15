@@ -141,9 +141,7 @@ month = st.selectbox("MONTH", options=month_options)
 poutcome_options = ['unknown', 'failure', 'other', 'success']
 poutcome = st.selectbox("POUTCOME", options=poutcome_options)
 
-client_data = [age, job, marital, education, default, balance, housing,
-       loan, contact, day, month, duration, campaign, pdays,
-       previous, poutcome]
+client_data = [age, job, marital, education, default, balance, housing,loan, contact, day, month, duration, campaign, pdays,previous, poutcome]
 data= np.array(list(client_data)).reshape(1,-1)
 
 clf.predict(data)
