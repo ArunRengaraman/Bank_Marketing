@@ -36,7 +36,7 @@ Which one is the best?
 """)
 
 dataset_name = st.sidebar.selectbox(
-    "Select Dataset",("Bank","Dummy"))
+    "Select Dataset",("Bank Marketing","Dummy"))
 
 st.write(f"## {dataset_name} Dataset")
 
