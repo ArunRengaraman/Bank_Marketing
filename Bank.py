@@ -114,35 +114,56 @@ pdays = st.number_input("PDAYS")
 previous = st.number_input("PREVIOUS")
 
 # Categorical columns
-job_options = ['management', 'technician', 'entrepreneur', 'blue-collar',
-               'unknown', 'retired', 'admin.', 'services', 'self-employed',
-               'unemployed', 'housemaid', 'student']
-job = st.selectbox("JOB", options=job_options)
+# Define mapping of numeric codes to categories for each categorical variable
+job_options = {0: 'admin.', 1: 'blue-collar', 2: 'entrepreneur', 3: 'housemaid',
+               4: 'management', 5: 'retired', 6: 'self-employed', 7: 'services',
+               8: 'student', 9: 'technician', 10: 'unemployed', 11: 'unknown'}
 
-marital_options = ['married', 'single', 'divorced']
-marital = st.selectbox("MARITAL", options=marital_options)
+marital_options = {0: 'divorced', 1: 'married', 2: 'single'}
 
-education_options = ['tertiary', 'secondary', 'unknown', 'primary']
-education = st.selectbox("EDUCATION", options=education_options)
+education_options = {0: 'primary', 1: 'secondary', 2: 'tertiary', 3: 'unknown'}
 
-housing_options = ['yes', 'no']
-housing = st.selectbox("HOUSING", options=housing_options)
+housing_options = {0: 'no', 1: 'yes'}
 
-default_options = ['yes', 'no']
-default = st.selectbox("DEFAULT", options=default_options)
+default_options = {0: 'no', 1: 'yes'}
 
-loan_options = ['no', 'yes']
-loan = st.selectbox("LOAN", options=loan_options)
+loan_options = {0: 'no', 1: 'yes'}
 
-contact_options = ['unknown', 'cellular', 'telephone']
-contact = st.selectbox("CONTACT", options=contact_options)
+contact_options = {0: 'cellular', 1: 'telephone', 2: 'unknown'}
 
-month_options = ['may', 'jun', 'jul', 'aug', 'oct', 'nov', 'dec', 'jan', 'feb',
-                 'mar', 'apr', 'sep']
-month = st.selectbox("MONTH", options=month_options)
+month_options = {0: 'apr', 1: 'aug', 2: 'dec', 3: 'feb', 4: 'jan', 5: 'jul',
+                 6: 'jun', 7: 'mar', 8: 'may', 9: 'nov', 10: 'oct', 11: 'sep'}
 
-poutcome_options = ['unknown', 'failure', 'other', 'success']
-poutcome = st.selectbox("POUTCOME", options=poutcome_options)
+poutcome_options = {0: 'failure', 1: 'other', 2: 'success', 3: 'unknown'}
+
+# Get the selected values for each categorical variable
+job_code = st.selectbox("JOB", options=list(job_options.keys()))
+job = job_options.get(job_code)
+
+marital_code = st.selectbox("MARITAL", options=list(marital_options.keys()))
+marital = marital_options.get(marital_code)
+
+education_code = st.selectbox("EDUCATION", options=list(education_options.keys()))
+education = education_options.get(education_code)
+
+housing_code = st.selectbox("HOUSING", options=list(housing_options.keys()))
+housing = housing_options.get(housing_code)
+
+default_code = st.selectbox("DEFAULT", options=list(default_options.keys()))
+default = default_options.get(default_code)
+
+loan_code = st.selectbox("LOAN", options=list(loan_options.keys()))
+loan = loan_options.get(loan_code)
+
+contact_code = st.selectbox("CONTACT", options=list(contact_options.keys()))
+contact = contact_options.get(contact_code)
+
+month_code = st.selectbox("MONTH", options=list(month_options.keys()))
+month = month_options.get(month_code)
+
+poutcome_code = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
+poutcome = poutcome_options.get(poutcome_code)
+
 
 client_data = [age, job, marital, education, default, balance, housing,loan, contact, day, month, duration, campaign, pdays,previous, poutcome]
 data= np.array(list(client_data)).reshape(1,-1)
