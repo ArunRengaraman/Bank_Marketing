@@ -10,7 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
-
+from sklearn.preprocessing import LabelEncoder
 from sklearn.decomposition import PCA
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
@@ -44,20 +44,17 @@ classifier_name = st.sidebar.selectbox(
     'Select classifier',
     ('GB', 'SVM', 'Random Forest')
 )
-objList = data.select_dtypes(include = "object").columns
-#Label Encoding for object to numeric conversion
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
 
-for values in objList:
-    data[values] = le.fit_transform(data[values].astype(str))
-
-data = data
 
 def get_dataset(name):
     data = None
     name == 'Bank Marketing'
     data = pd.read_csv('bank/bank-full.csv')
+    objList = data.select_dtypes(include = "object").columns
+    le = LabelEncoder()
+    for values in objList:
+        data[values] = le.fit_transform(data[values].astype(str))
+        data = data
     X = data.iloc[:, 1:-1]
     y = data.iloc[:,-1]         
     return X, y
