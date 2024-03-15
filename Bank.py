@@ -49,7 +49,7 @@ classifier_name = st.sidebar.selectbox(
 def get_dataset(name):
     data = None
     name == 'Bank Marketing'
-    data = pd.read_csv('bank/bank-full.csv', delimiter=";")
+    data = pd.read_csv('bank-full.csv', delimiter=";")
     objList = data.select_dtypes(include = "object").columns
     le = LabelEncoder()
     for values in objList:
