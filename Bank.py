@@ -12,7 +12,6 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
-import hvplot.pandas
 
 
 st.title('Streamlit Example')
@@ -176,8 +175,4 @@ if st.button("Run Model"):
     else:
         st.write("The client did not subscribe to a term deposit.")
 
-nice_plot = data.hvplot(kind='scatter')
-
-# Display the Holoviews plot
-st.bokeh_chart(nice_plot)
 
