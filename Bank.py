@@ -12,7 +12,6 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
-import holoviews as hv
 import hvplot.pandas
 
 
@@ -151,8 +150,7 @@ contact_code = st.selectbox("CONTACT", options=list(contact_options.keys()))
 month_code = st.selectbox("MONTH", options=list(month_options.keys()))
 poutcome_code = st.selectbox("POUTCOME", options=list(poutcome_options.keys()))
 
-hvexplorer = data.hvplot.explorer()
-st.bokeh_chart(hv.render(hvexplorer, backend='bokeh'))
+
 # Add a button to trigger the model prediction
 if st.button("Run Model"):
     # Get numerical values corresponding to the selected categorical options
@@ -180,4 +178,5 @@ if st.button("Run Model"):
         st.write("The client did not subscribe to a term deposit.")
 
 
-
+st.write("Interactive Visualization:")
+st.write(data.hvplot.explorer())
