@@ -13,6 +13,8 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
 import holoviews as hv
+import hvplot.pandas
+
 
 
 st.title('Streamlit Example')
