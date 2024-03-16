@@ -12,9 +12,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
-import matplotlib.pyplot as plt
-import mpld3
-import streamlit.components.v1 as components
+
 
 
 st.title('Streamlit Example')
@@ -178,10 +176,4 @@ if st.button("Run Model"):
     else:
         st.write("The client did not subscribe to a term deposit.")
 
-#create your figure and get the figure object returned
-fig = plt.figure() 
-plt.plot(X,y) 
-
-fig_html = mpld3.fig_to_html(fig)
-components.html(fig_html, height=600)
 
