@@ -66,7 +66,7 @@ def add_parameter_ui(clf_name):
         params['max_depth'] = max_depth
         params['n_estimators'] = n_estimators
     elif clf_name == 'MLP':
-        hidden_layer_sizes = st.sidebar.slider('Hidden Layer Sizes (MLP)', 0,128)
+        hidden_layer_sizes = st.sidebar.slider('Hidden Layer Sizes (MLP)', 24,256)
         activation = st.sidebar.selectbox('Activation Function (MLP)', ['identity', 'logistic', 'tanh', 'relu'])
         solver = st.sidebar.selectbox('Solver (MLP)', ['lbfgs', 'sgd', 'adam'])
         params['hidden_layer_sizes'] = hidden_layer_sizes
