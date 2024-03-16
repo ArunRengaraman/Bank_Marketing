@@ -12,7 +12,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
-import hvplot.pandas
+import holoviews as hv
 
 
 st.title('Streamlit Example')
@@ -177,4 +177,4 @@ if st.button("Run Model"):
 
 
 hvexplorer = data.hvplot.explorer()
-st.write(hv.render(hvexplorer, backend='bokeh'))
+st.bokeh_chart(hv.render(hvexplorer, backend='bokeh'))
