@@ -11,6 +11,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
+from sklearn.neural_network import MLPClassifier
+
 
 st.title('Streamlit Example')
 
