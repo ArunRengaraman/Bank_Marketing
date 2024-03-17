@@ -14,7 +14,6 @@ import pandas as pd
 from sklearn.neural_network import MLPClassifier
 
 
-def app():
 st.title('Streamlit Example')
 
 st.write("""
