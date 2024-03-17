@@ -23,7 +23,7 @@ def app():
 
         Input variables:
         
-           # bank client data:
+           # Bank client data:
            
            1 - age (numeric)
            
