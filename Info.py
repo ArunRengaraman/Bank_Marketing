@@ -1,60 +1,48 @@
-
 # coding: utf-8
-
-# In[6]:
-
 
 import streamlit as st
 import matplotlib.pyplot as plt
 from PIL import Image
 import numpy as np
 
-
-# In[7]:
-
-
 def app():
     st.title("Bank Marketing")
     st.write("Source : https://archive.ics.uci.edu/dataset/222/bank+marketing")
     st.write("""
-# Bank Marketing Dataset
+        # Bank Marketing Dataset
 
-The data is related to direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required to assess if the product (bank term deposit) would be subscribed ('yes') or not ('no').
+        The data is related to direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required to assess if the product (bank term deposit) would be subscribed ('yes') or not ('no').
 
-There are four datasets available:
+        There are four datasets available:
 
- **bank-full.csv**: Contains all examples and 17 inputs, ordered by date (an older version of the dataset with fewer inputs).
+         **bank-full.csv**: Contains all examples and 17 inputs, ordered by date (an older version of the dataset with fewer inputs).
 
+        The smaller datasets are provided to test more computationally demanding machine learning algorithms (e.g., SVM).
 
-The smaller datasets are provided to test more computationally demanding machine learning algorithms (e.g., SVM).
+        The classification goal is to predict if the client will subscribe (yes/no) a term deposit (variable y).
 
-The classification goal is to predict if the client will subscribe (yes/no) a term deposit (variable y).
+        Input variables:
+           # bank client data:
+           1 - age (numeric)
+           2 - job : type of job (categorical: "admin.","unknown","unemployed","management","housemaid","entrepreneur","student",
+                                               "blue-collar","self-employed","retired","technician","services") 
+           3 - marital : marital status (categorical: "married","divorced","single"; note: "divorced" means divorced or widowed)
+           4 - education (categorical: "unknown","secondary","primary","tertiary")
+           5 - default: has credit in default? (binary: "yes","no")
+           6 - balance: average yearly balance, in euros (numeric) 
+           7 - housing: has housing loan? (binary: "yes","no")
+           8 - loan: has personal loan? (binary: "yes","no")
+           # related with the last contact of the current campaign:
+           9 - contact: contact communication type (categorical: "unknown","telephone","cellular") 
+          10 - day: last contact day of the month (numeric)
+          11 - month: last contact month of year (categorical: "jan", "feb", "mar", ..., "nov", "dec")
+          12 - duration: last contact duration, in seconds (numeric)
+           # other attributes:
+          13 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
+          14 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric, -1 means client was not previously contacted)
+          15 - previous: number of contacts performed before this campaign and for this client (numeric)
+          16 - poutcome: outcome of the previous marketing campaign (categorical: "unknown","other","failure","success")
 
-Input variables:
-   # bank client data:
-   1 - age (numeric)
-   2 - job : type of job (categorical: "admin.","unknown","unemployed","management","housemaid","entrepreneur","student",
-                                       "blue-collar","self-employed","retired","technician","services") 
-   3 - marital : marital status (categorical: "married","divorced","single"; note: "divorced" means divorced or widowed)
-   4 - education (categorical: "unknown","secondary","primary","tertiary")
-   5 - default: has credit in default? (binary: "yes","no")
-   6 - balance: average yearly balance, in euros (numeric) 
-   7 - housing: has housing loan? (binary: "yes","no")
-   8 - loan: has personal loan? (binary: "yes","no")
-   # related with the last contact of the current campaign:
-   9 - contact: contact communication type (categorical: "unknown","telephone","cellular") 
-  10 - day: last contact day of the month (numeric)
-  11 - month: last contact month of year (categorical: "jan", "feb", "mar", ..., "nov", "dec")
-  12 - duration: last contact duration, in seconds (numeric)
-   # other attributes:
-  13 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
-  14 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric, -1 means client was not previously contacted)
-  15 - previous: number of contacts performed before this campaign and for this client (numeric)
-  16 - poutcome: outcome of the previous marketing campaign (categorical: "unknown","other","failure","success")
-
-  Output variable (desired target):
-  17 - y - has the client subscribed a term deposit? (binary: "yes","no")
-  
-""")
-
-  
+          Output variable (desired target):
+          17 - y - has the client subscribed a term deposit? (binary: "yes","no")
+    """)
