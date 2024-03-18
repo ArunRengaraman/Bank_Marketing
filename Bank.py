@@ -12,6 +12,8 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import roc_curve, auc
+
 
 def app():
     st.title('Streamlit Example')
