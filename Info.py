@@ -41,7 +41,7 @@ def app():
            
            8 - loan: has personal loan? (binary: "yes","no")
            
-           # related with the last contact of the current campaign:
+           # Related with the last contact of the current campaign:
            
            9 - contact: contact communication type (categorical: "unknown","telephone","cellular") 
            
@@ -51,7 +51,7 @@ def app():
           
           12 - duration: last contact duration, in seconds (numeric)
           
-           # other attributes:
+           # Other attributes:
            
           13 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
           
