@@ -193,3 +193,22 @@ def app():
             st.write("The client subscribed to a term deposit.")
         else:
             st.write("The client did not subscribe to a term deposit.")
+             # Obtain predicted probabilities
+    y_probs = clf.predict_proba(X_test)[:, 1]
+
+    # Compute ROC curve and AUC
+    fpr, tpr, thresholds = roc_curve(y_test, y_probs)
+    roc_auc = auc(fpr, tpr)
+
+    # Plot ROC curve
+    st.write('Receiver Operating Characteristic (ROC) Curve')
+    fig, ax = plt.subplots()
+    ax.plot(fpr, tpr, color='darkorange', lw=2, label='ROC curve (area = %0.2f)' % roc_auc)
+    ax.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    ax.set_xlim([0.0, 1.0])
+    ax.set_ylim([0.0, 1.05])
+    ax.set_xlabel('False Positive Rate')
+    ax.set_ylabel('True Positive Rate')
+    ax.set_title('Receiver Operating Characteristic (ROC) Curve')
+    ax.legend(loc="lower right")
+    st.pyplot(fig)
