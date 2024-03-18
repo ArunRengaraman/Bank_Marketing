@@ -118,13 +118,13 @@ def app():
     st.write(f'Accuracy =', acc)
 
     st.write('Enter the values for prediction')
-    age = st.number_input("AGE")
-    balance = st.number_input("BALANCE")
-    day = st.number_input("DAY")
-    duration = st.number_input("DURATION")
-    campaign = st.number_input("CAMPAIGN")
-    pdays = st.number_input("PDAYS")
-    previous = st.number_input("PREVIOUS")
+    age = st.number_input("AGE",value=None, placeholder="Type a number...")
+    balance = st.number_input("BALANCE",value=None, placeholder="Type a number...")
+    day = st.number_input("DAY",value=None, placeholder="Type a number...")
+    duration = st.number_input("DURATION",value=None, placeholder="Type a number...")
+    campaign = st.number_input("CAMPAIGN",value=None, placeholder="Type a number...")
+    pdays = st.number_input("PDAYS",value=None, placeholder="Type a number...")
+    previous = st.number_input("PREVIOUS",value=None, placeholder="Type a number...")
 
     # Mapping of textual options to numeric codes for each categorical variable
     job_options = {'management': 1, 'technician': 2, 'entrepreneur': 3, 'blue-collar': 4,
