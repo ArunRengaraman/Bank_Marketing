@@ -7,7 +7,7 @@ import numpy as np
 
 def app():
     st.title("Bank Marketing")
-    st.write("Source : https://archive.ics.uci.edu/dataset/222/bank+marketing")
+    st.write("[Dataset](https://archive.ics.uci.edu/dataset/222/bank+marketing)")
     st.write("""
         # Bank Marketing Dataset
 
