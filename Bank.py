@@ -193,7 +193,7 @@ def app():
             st.write("The client subscribed to a term deposit.")
         else:
             st.write("The client did not subscribe to a term deposit.")
-             # Obtain predicted probabilities
+            # Obtain predicted probabilities
     y_probs = clf.predict_proba(X_test)[:, 1]
 
     # Compute ROC curve and AUC
