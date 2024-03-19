@@ -23,8 +23,7 @@ def app():
     Which one is the best?
     """)
 
-    dataset_name = st.sidebar.selectbox(
-        "Select Dataset", ("Bank Marketing", "Dummy"))
+    dataset_name = "Bank Marketing"
 
     st.write(f"## {dataset_name} Dataset")
 
