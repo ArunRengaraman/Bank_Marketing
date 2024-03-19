@@ -16,14 +16,11 @@ from sklearn.metrics import roc_curve, auc
 
 
 def app():
-    st.title('Streamlit Example')
+    st.title('Bank Marketing in Streamlit')
 
-    st.write("""
-    # Explore different classifiers and datasets
-    Which one is the best?
-    """)
 
-    dataset_name = st.write("Bank Marketing")
+    dataset_name = st.sidebar.selectbox(
+        "Select Dataset", ("Bank Marketing", ""))
 
     st.write(f"## {dataset_name} Dataset")
 
