@@ -69,7 +69,7 @@ def app():
             max_depth = st.sidebar.slider(
                 'max_depth (Random Forest)', 2, 15)
             n_estimators = st.sidebar.slider(
-                'n_estimators (Random Forest)', 1, 100)
+                'n_estimators (Random Forest)', 1, 1000)
             params['max_depth'] = max_depth
             params['n_estimators'] = n_estimators
         elif clf_name == 'MLP':
