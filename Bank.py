@@ -23,7 +23,7 @@ def app():
     Which one is the best?
     """)
 
-    dataset_name = "Bank Marketing"
+    dataset_name = st.write("Bank Marketing")
 
     st.write(f"## {dataset_name} Dataset")
 
