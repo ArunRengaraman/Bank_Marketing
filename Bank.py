@@ -20,7 +20,7 @@ def app():
 
 
     dataset_name = st.sidebar.selectbox(
-        "Select Dataset", ("Bank Marketing", ""))
+        "Select Dataset", ("Bank Marketing"))
 
     st.write(f"## {dataset_name} Dataset")
 
