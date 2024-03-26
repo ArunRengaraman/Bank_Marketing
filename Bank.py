@@ -232,7 +232,7 @@ def app():
 
     # Create the heatmap
     plt.figure(figsize=(8, 6))
-    plt.imshow(data, cmap='viridis', interpolation='nearest')
+    plt.imshow(data, cmap='viridis', interpolation='bilinear')
     plt.colorbar()  # Add color bar indicating the scale
     plt.title('Heatmap Example')
     plt.xlabel('X-axis')
