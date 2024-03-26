@@ -28,7 +28,7 @@ def app():
     st.write(f"## {dataset_name} Dataset")
 
     classifier_name = st.sidebar.selectbox(
-        'Select classifier', ('GB', 'SVM','XGBoost' 'Random Forest', 'MLP')
+        'Select classifier', ('GB', 'SVM','XGBoost', 'Random Forest', 'MLP')
     )
 
     def get_dataset(name):
