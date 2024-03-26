@@ -13,6 +13,8 @@ from sklearn.metrics import accuracy_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import roc_curve, auc
+import xgboost as xgb
+
 
 
 def app():
@@ -25,7 +27,7 @@ def app():
     st.write(f"## {dataset_name} Dataset")
 
     classifier_name = st.sidebar.selectbox(
-        'Select classifier', ('GB', 'SVM', 'Random Forest', 'MLP')
+        'Select classifier', ('GB', 'SVM','XGBoost' 'Random Forest', 'MLP')
     )
 
     def get_dataset(name):
@@ -53,6 +55,13 @@ def app():
                 'Kernel (SVM)', ['linear', 'poly', 'rbf', 'sigmoid'])
             params['C'] = C
             params['kernel'] = kernel
+        elif clf_name == 'XGBoost':
+            n_estimators = st.sidebar.slider('n_estimators (XGBoost)', 1, 100, 10)
+            learning_rate = st.sidebar.slider('learning_rate (XGBoost)', 0.01, 1.0, 0.1)
+            max_depth = st.sidebar.slider('max_depth (XGBoost)', 2, 15)
+            params['n_estimators'] = n_estimators
+            params['learning_rate'] = learning_rate
+            params['max_depth'] = max_depth
         elif clf_name == 'GB':
             max_depth = st.sidebar.slider('max_depth (GB)', 2, 15)
             n_estimators = st.sidebar.slider('n_estimators (GB)', 1, 100)
@@ -84,6 +93,11 @@ def app():
         clf = None
         if clf_name == 'SVM':
             clf = SVC(C=params['C'], kernel=params['kernel'])
+        elif clf_name == 'XGBoost':
+            clf = xgb.XGBClassifier(n_estimators=params['n_estimators'], 
+                                    learning_rate=params['learning_rate'], 
+                                    max_depth=params['max_depth'], 
+                                    random_state=1234)
         elif clf_name == 'GB':
             clf = GradientBoostingClassifier(
                 n_estimators=params['n_estimators'], max_depth=params['max_depth'],
