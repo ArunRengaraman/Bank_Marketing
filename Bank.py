@@ -225,11 +225,6 @@ def app():
     ax.set_title('Receiver Operating Characteristic (ROC) Curve')
     ax.legend(loc="lower right")
     st.pyplot(fig)
-    
-    heatmap_data = get_dataset(dataset_name)
-
-    # Display the heatmap using Streamlit's native function
-    st.write("## Heatmap")
-    st.image(heatmap_data, caption='Heatmap', use_column_width=True, cmap='viridis', channels='RGB')
+  
 
 
