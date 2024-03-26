@@ -10,6 +10,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
+from xgboost import XGBClassifier
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import roc_curve, auc
