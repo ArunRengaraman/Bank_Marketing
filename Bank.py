@@ -226,7 +226,7 @@ def app():
     ax.legend(loc="lower right")
     st.pyplot(fig)
     
-    heatmap_data = data
+    heatmap_data = get_dataset(dataset_name)
 
     # Display the heatmap using Streamlit's native function
     st.write("## Heatmap")
