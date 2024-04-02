@@ -79,13 +79,18 @@ def app():
             params['max_depth'] = max_depth
             params['n_estimators'] = n_estimators
         elif clf_name == 'MLP':
-            hidden_layer_sizes = st.sidebar.slider(
-                'Hidden Layer Sizes (MLP)', 24, 256)
+            hidden_layer_sizes_1 = st.sidebar.slider(
+                'Hidden Layer Sizes (MLP) 1', 24, 256)
+            hidden_layer_sizes_2 = st.sidebar.slider(
+                'Hidden Layer Sizes (MLP) 2', 24, 128)
+            hidden_layer_sizes_3 = st.sidebar.slider(
+                'Hidden Layer Sizes (MLP) 3', 24, 64)
             activation = st.sidebar.selectbox(
                 'Activation Function (MLP)', ['identity', 'logistic', 'tanh', 'relu'])
             solver = st.sidebar.selectbox(
                 'Solver (MLP)', ['lbfgs', 'sgd', 'adam'])
-            params['hidden_layer_sizes'] = hidden_layer_sizes
+            
+            hidden_layer_sizes = (params['hidden_layer_sizes_1'], params['hidden_layer_sizes_2'], params['hidden_layer_sizes_3'])
             params['activation'] = activation
             params['solver'] = solver
         return params
@@ -109,7 +114,7 @@ def app():
                 random_state=1234)
         elif clf_name == 'MLP':
             clf = MLPClassifier(hidden_layer_sizes=params['hidden_layer_sizes'], activation=params['activation'],
-                                solver=params['solver'], random_state=1234)
+                                solver=params['solver'], random_state=42)
         return clf
 
     # Obtain parameters
