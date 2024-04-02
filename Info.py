@@ -17,8 +17,6 @@ def app():
 
          **bank-full.csv**: Contains all examples and 17 inputs, ordered by date (an older version of the dataset with fewer inputs).
 
-        The smaller datasets are provided to test more computationally demanding machine learning algorithms (e.g., SVM).
-
         The classification goal is to predict if the client will subscribe (yes/no) a term deposit (variable y).
 
         Input variables:
