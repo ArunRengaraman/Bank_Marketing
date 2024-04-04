@@ -42,7 +42,7 @@ def app():
             data[values] = le.fit_transform(data[values].astype(str))
             data = data
         X = data.loc[:, data.columns != 'y']
-        y = data.loc[:, data.columns == 'y']
+        y = data.loc[:, data.columns == 'y'].values.ravel()
         return X, y
 
     X, y = get_dataset(dataset_name)
