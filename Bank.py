@@ -8,6 +8,7 @@ from sklearn.decomposition import PCA
 from xgboost import XGBClassifier
 from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.metrics import accuracy_score
@@ -94,6 +95,11 @@ def app():
             params['hidden_layer_sizes_3'] = hidden_layer_sizes_3
             params['activation'] = activation
             params['solver'] = solver
+        elif clf_name == 'KNN':
+            n_neighbors = st.sidebar.slider('Number of Neighbors (KNN)', 1, 30)
+            params['n_neighbors'] = n_neighbors
+        elif clf_name == 'Logistic Regression':
+            pass
         return params
 
     def get_classifier(clf_name, params):
@@ -117,6 +123,11 @@ def app():
             hidden_layer_sizes = (params['hidden_layer_sizes_1'], params['hidden_layer_sizes_2'], params['hidden_layer_sizes_3'])
             clf = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, activation=params['activation'],
                                 solver=params['solver'], random_state=42)
+        elif clf_name == 'KNN':
+            n_neighbors = st.sidebar.slider('Number of Neighbors (KNN)', 1, 30)
+            clf = KNeighborsClassifier(n_neighbors=n_neighbors)
+        elif clf_name == 'Logistic Regression':
+            clf = LogisticRegression()
         return clf
 
     # Obtain parameters
