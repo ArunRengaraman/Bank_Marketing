@@ -14,7 +14,7 @@ import Bank
 # In[48]:
 
 
-PAGES={"Details":Info,"Model":Bank}
+PAGES={"Details":Info,"Model":Bank,"Visual":Visualization}
 
 
 # In[49]:
