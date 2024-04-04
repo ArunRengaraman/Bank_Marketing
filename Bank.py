@@ -29,7 +29,7 @@ def app():
     st.write(f"## {dataset_name} Dataset")
 
     classifier_name = st.sidebar.selectbox(
-        'Select classifier', ('Random Forest','SVM','GB','XGBoost','MLP','KNN','LR')
+        'Select classifier', ('Random Forest','SVM','GB','XGBoost','MLP','LR')
     )
 
     def get_dataset(name):
@@ -95,9 +95,6 @@ def app():
             params['hidden_layer_sizes_3'] = hidden_layer_sizes_3
             params['activation'] = activation
             params['solver'] = solver
-        elif clf_name == 'KNN':
-            n_neighbors = st.sidebar.slider('Number of Neighbors (KNN)', 1, 30, key='knn_n_neighbors_slider')
-            params['n_neighbors'] = n_neighbors
         elif clf_name == 'Logistic Regression':
             pass
         return params
@@ -123,9 +120,6 @@ def app():
             hidden_layer_sizes = (params['hidden_layer_sizes_1'], params['hidden_layer_sizes_2'], params['hidden_layer_sizes_3'])
             clf = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, activation=params['activation'],
                                 solver=params['solver'], random_state=42)
-        elif clf_name == 'KNN':
-            n_neighbors = st.sidebar.slider('Number of Neighbors (KNN)', 1, 30)
-            clf = KNeighborsClassifier(n_neighbors=n_neighbors)
         elif clf_name == 'Logistic Regression':
             clf = LogisticRegression()
         return clf
