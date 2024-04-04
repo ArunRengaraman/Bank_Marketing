@@ -96,7 +96,7 @@ def app():
             params['activation'] = activation
             params['solver'] = solver
         elif clf_name == 'KNN':
-            n_neighbors = st.sidebar.slider('Number of Neighbors (KNN)', 1, 30,, key='knn_n_neighbors_slider')
+            n_neighbors = st.sidebar.slider('Number of Neighbors (KNN)', 1, 30, key='knn_n_neighbors_slider')
             params['n_neighbors'] = n_neighbors
         elif clf_name == 'Logistic Regression':
             pass
