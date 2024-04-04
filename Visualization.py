@@ -11,6 +11,8 @@ def app():
     # Load Bank Marketing dataset
     # Replace 'bank-full.csv' with the actual path to your dataset file
     data = pd.read_csv('bank-full.csv', delimiter=';')
+    objList = data.select_dtypes(include="object").columns
+
     le = LabelEncoder()
         for values in objList:
             data[values] = le.fit_transform(data[values].astype(str))
