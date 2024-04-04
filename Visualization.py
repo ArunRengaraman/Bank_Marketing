@@ -56,20 +56,6 @@ def app():
     plt.title('Distribution of Age')
     st.pyplot()
 
-    # Interactive box plot
-    st.header('Interactive Box Plot: Balance by Marital Status')
-    selected_category = st.selectbox('Select a categorical variable', ['marital', 'education', 'default'])
-    if selected_category:
-        fig = px.box(data, x=selected_category, y='balance', points='all', title='Balance by {}'.format(selected_category))
-        st.plotly_chart(fig)
-
-    # Interactive violin plot
-    st.header('Interactive Violin Plot: Balance Distribution')
-    selected_variable = st.selectbox('Select a variable', data.columns)
-    if selected_variable:
-        fig = px.violin(data, y=selected_variable, box=True, points='all', title='Distribution of {}'.format(selected_variable))
-        st.plotly_chart(fig)
-
     # Scatter plot of balance vs. duration
     st.header('Scatter Plot: Balance vs. Duration')
     st.set_option('deprecation.showPyplotGlobalUse', False)
