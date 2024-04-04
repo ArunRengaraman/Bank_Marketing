@@ -4,6 +4,7 @@ scikit-learn>=0.24.2
 matplotlib>=1.4.3
 seaborn
 pandas>=0.19
+plotly
 hvplot==0.8.1
 streamlit
 xgboost
