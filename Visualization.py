@@ -11,7 +11,7 @@ def app():
     # Load Bank Marketing dataset
     # Replace 'bank-full.csv' with the actual path to your dataset file
     data = pd.read_csv('bank-full.csv', delimiter=';')
-
+    data.dropna(inplace=True)
     # Bar plot of job distribution
     st.header('Bar Plot: Job Distribution')
     st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -42,7 +42,8 @@ def app():
     plt.ylabel('Balance')
     plt.title('Balance vs. Duration')
     st.pyplot()
-
+    
+   
     # Heatmap of correlation matrix
     st.header('Heatmap: Correlation Matrix')
     plt.figure(figsize=(10, 6))
