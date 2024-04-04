@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def data_visualization():
+def app():
     st.title('Data Visualization')
 
     # Load Bank Marketing dataset
@@ -47,4 +47,4 @@ def data_visualization():
     st.pyplot()
 
 if __name__ == '__main__':
-    data_visualization()
+    app()
