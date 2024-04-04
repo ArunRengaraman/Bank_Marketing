@@ -39,12 +39,6 @@ def app():
     plt.title('Balance vs. Age')
     st.pyplot()
 
-    # Interactive pairplot
-    st.header('Pairplot: Interactive Scatterplot Matrix')
-    selected_columns = st.multiselect('Select columns for pairplot', data.columns)
-    if selected_columns:
-        pairplot = sns.pairplot(data[selected_columns])
-        st.pyplot(pairplot)
 
     # Histogram with slider
     st.header('Histogram with Slider: Distribution of Age')
