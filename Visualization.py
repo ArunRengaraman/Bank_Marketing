@@ -3,8 +3,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import warnings
-warnings.filterwarnings("ignore")
+
 
 def app():
     st.title('Data Visualization')
@@ -34,6 +33,7 @@ def app():
 
     # Scatter plot of balance vs. duration
     st.header('Scatter Plot: Balance vs. Duration')
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     plt.figure(figsize=(10, 6))
     sns.scatterplot(x='duration', y='balance', data=data, hue='y')
     plt.xlabel('Duration')
