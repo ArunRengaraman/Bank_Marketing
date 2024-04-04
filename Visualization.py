@@ -38,6 +38,37 @@ def app():
     plt.title('Balance vs. Age')
     st.pyplot()
 
+    # Interactive pairplot
+    st.header('Pairplot: Interactive Scatterplot Matrix')
+    selected_columns = st.multiselect('Select columns for pairplot', data.columns)
+    if selected_columns:
+        pairplot = sns.pairplot(data[selected_columns])
+        st.pyplot(pairplot)
+
+    # Histogram with slider
+    st.header('Histogram with Slider: Distribution of Age')
+    bins = st.slider('Number of bins', min_value=5, max_value=50, value=20)
+    plt.figure(figsize=(10, 6))
+    sns.histplot(data['age'], bins=bins, kde=True)
+    plt.xlabel('Age')
+    plt.ylabel('Frequency')
+    plt.title('Distribution of Age')
+    st.pyplot()
+
+    # Interactive box plot
+    st.header('Interactive Box Plot: Balance by Marital Status')
+    selected_category = st.selectbox('Select a categorical variable', ['marital', 'education', 'default'])
+    if selected_category:
+        fig = px.box(data, x=selected_category, y='balance', points='all', title='Balance by {}'.format(selected_category))
+        st.plotly_chart(fig)
+
+    # Interactive violin plot
+    st.header('Interactive Violin Plot: Balance Distribution')
+    selected_variable = st.selectbox('Select a variable', data.columns)
+    if selected_variable:
+        fig = px.violin(data, y=selected_variable, box=True, points='all', title='Distribution of {}'.format(selected_variable))
+        st.plotly_chart(fig)
+
     # Scatter plot of balance vs. duration
     st.header('Scatter Plot: Balance vs. Duration')
     st.set_option('deprecation.showPyplotGlobalUse', False)
