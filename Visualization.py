@@ -14,6 +14,7 @@ def app():
 
     # Bar plot of job distribution
     st.header('Bar Plot: Job Distribution')
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     plt.figure(figsize=(10, 6))
     sns.countplot(x='job', data=data)
     plt.xticks(rotation=45)
@@ -24,6 +25,7 @@ def app():
 
     # Line plot of balance vs. age
     st.header('Line Plot: Balance vs. Age')
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     plt.figure(figsize=(10, 6))
     sns.lineplot(x='age', y='balance', data=data)
     plt.xlabel('Age')
