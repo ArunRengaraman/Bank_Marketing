@@ -12,11 +12,10 @@ def app():
     # Replace 'bank-full.csv' with the actual path to your dataset file
     data = pd.read_csv('bank-full.csv', delimiter=';')
     objList = data.select_dtypes(include="object").columns
-
     le = LabelEncoder()
-        for values in objList:
-            data[values] = le.fit_transform(data[values].astype(str))
-            data = data
+    for values in objList:
+        data[values] = le.fit_transform(data[values].astype(str))
+        sdata = data
     # Bar plot of job distribution
     st.header('Bar Plot: Job Distribution')
     st.set_option('deprecation.showPyplotGlobalUse', False)
