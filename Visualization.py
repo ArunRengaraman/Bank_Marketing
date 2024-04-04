@@ -63,7 +63,7 @@ def app():
         sdata = data
     # Heatmap of correlation matrix
     st.header('Heatmap: Correlation Matrix')
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(20, 12))
     sns.heatmap(data.corr(), annot=True, cmap='coolwarm')
     plt.title('Correlation Matrix')
     st.pyplot()
