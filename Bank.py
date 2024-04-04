@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.preprocessing import LabelEncoder
 from sklearn.decomposition import PCA
 from xgboost import XGBClassifier
 from sklearn.svm import SVC
@@ -16,8 +16,11 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import roc_curve, auc
 import xgboost as xgb
 
+
+
 def app():
     st.title('Bank Marketing in Streamlit')
+
 
     dataset_name = st.sidebar.selectbox(
         "Select Dataset", ("Bank Marketing",""))
@@ -127,13 +130,8 @@ def app():
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42)
 
-    # Scale the features
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-    X_test_scaled = scaler.transform(X_test)
-
-    clf.fit(X_train_scaled, y_train)
-    y_pred = clf.predict(X_test_scaled)
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
 
     acc = accuracy_score(y_test, y_pred)
 
@@ -235,5 +233,3 @@ def app():
     ax.legend(loc="lower right")
     st.pyplot(fig)
   
-
-
