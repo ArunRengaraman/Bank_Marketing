@@ -14,10 +14,7 @@ def app():
     # Replace 'bank-full.csv' with the actual path to your dataset file
     data = pd.read_csv('bank-full.csv', delimiter=';')
     objList = data.select_dtypes(include="object").columns
-    le = LabelEncoder()
-    for values in objList:
-        data[values] = le.fit_transform(data[values].astype(str))
-        sdata = data
+   
     # Bar plot of job distribution
     st.header('Bar Plot: Job Distribution')
     st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -60,7 +57,10 @@ def app():
     plt.title('Balance vs. Duration')
     st.pyplot()
     
-   
+    le = LabelEncoder()
+    for values in objList:
+        data[values] = le.fit_transform(data[values].astype(str))
+        sdata = data
     # Heatmap of correlation matrix
     st.header('Heatmap: Correlation Matrix')
     plt.figure(figsize=(10, 6))
