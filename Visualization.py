@@ -45,6 +45,3 @@ def app():
     sns.heatmap(data.corr(), annot=True, cmap='coolwarm')
     plt.title('Correlation Matrix')
     st.pyplot()
-
-if __name__ == '__main__':
-    app()
