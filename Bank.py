@@ -184,7 +184,7 @@ def app():
     poutcome_code = st.selectbox(
         "POUTCOME", options=list(poutcome_options.keys()))
 
-     if st.button("Fill Dropdown Values"):
+    if st.button("Fill Dropdown Values"):
         st.session_state.job_code = 'management'
         st.session_state.marital_code = 'married'
         st.session_state.education_code = 'tertiary'
