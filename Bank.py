@@ -90,7 +90,7 @@ def app():
             params['solver'] = solver
         elif clf_name == 'Decision Tree':
             max_depth = st.sidebar.slider(
-                max_depth (Decision Tree)', 1, 15)
+                'max_depth (Decision Tree)', 1, 15)
             params['max_depth'] = max_depth
         return params
 
