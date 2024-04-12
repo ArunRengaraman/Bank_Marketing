@@ -185,6 +185,25 @@ def app():
         "POUTCOME", options=list(poutcome_options.keys()))
 
 
+    if st.button("Test1"):
+        st.session_state.job_code = 'management'
+        st.session_state.marital_code = 'married'
+        st.session_state.education_code = 'tertiary'
+        st.session_state.housing_code = 'yes'
+        st.session_state.default_code = 'no'
+        st.session_state.loan_code = 'no'
+        st.session_state.contact_code = 'cellular'
+        st.session_state.month_code = 'may'
+        st.session_state.poutcome_code = 'success'
+        st.session_state.age = 30
+        st.session_state.balance = 1000
+        st.session_state.day = 15
+        st.session_state.duration = 200
+        st.session_state.campaign = 2
+        st.session_state.pdays = 20
+        st.session_state.previous = 1
+
+
     # Add a button to trigger the model prediction
     if st.button("Run Model"):
         # Get numerical values corresponding to the selected categorical options
