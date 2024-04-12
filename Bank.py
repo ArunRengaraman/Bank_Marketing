@@ -184,65 +184,65 @@ def app():
     poutcome_code = st.selectbox(
         "POUTCOME", options=list(poutcome_options.keys()))
 
-if st.button("Fill Values"):
-    st.session_state.age = 30
-    st.session_state.balance = 1000
-    st.session_state.day = 15
-    st.session_state.duration = 200
-    st.session_state.campaign = 2
-    st.session_state.pdays = 20
-    st.session_state.previous = 1
-    st.session_state.job_code = 'management'
-    st.session_state.marital_code = 'married'
-    st.session_state.education_code = 'tertiary'
-    st.session_state.housing_code = 'yes'
-    st.session_state.default_code = 'no'
-    st.session_state.loan_code = 'no'
-    st.session_state.contact_code = 'cellular'
-    st.session_state.month_code = 'may'
-    st.session_state.poutcome_code = 'success'
+    if st.button("Fill Values"):
+        st.session_state.age = 30
+        st.session_state.balance = 1000
+        st.session_state.day = 15
+        st.session_state.duration = 200
+        st.session_state.campaign = 2
+        st.session_state.pdays = 20
+        st.session_state.previous = 1
+        st.session_state.job_code = 'management'
+        st.session_state.marital_code = 'married'
+        st.session_state.education_code = 'tertiary'
+        st.session_state.housing_code = 'yes'
+        st.session_state.default_code = 'no'
+        st.session_state.loan_code = 'no'
+        st.session_state.contact_code = 'cellular'
+        st.session_state.month_code = 'may'
+        st.session_state.poutcome_code = 'success'
     
  # Display the values in the text boxes and drop-down menus
-st.sidebar.text_input("AGE", value=st.session_state.age, key="age")
-st.sidebar.text_input("BALANCE", value=st.session_state.balance, key="balance")
-st.sidebar.text_input("DAY", value=st.session_state.day, key="day")
-st.sidebar.text_input("DURATION", value=st.session_state.duration, key="duration")
-st.sidebar.text_input("CAMPAIGN", value=st.session_state.campaign, key="campaign")
-st.sidebar.text_input("PDAYS", value=st.session_state.pdays, key="pdays")
-st.sidebar.text_input("PREVIOUS", value=st.session_state.previous, key="previous")
-
+    st.sidebar.text_input("AGE", value=st.session_state.age, key="age")
+    st.sidebar.text_input("BALANCE", value=st.session_state.balance, key="balance")
+    st.sidebar.text_input("DAY", value=st.session_state.day, key="day")
+    st.sidebar.text_input("DURATION", value=st.session_state.duration, key="duration")
+    st.sidebar.text_input("CAMPAIGN", value=st.session_state.campaign, key="campaign")
+    st.sidebar.text_input("PDAYS", value=st.session_state.pdays, key="pdays")
+    st.sidebar.text_input("PREVIOUS", value=st.session_state.previous, key="previous")
+    
 
 # Mapping of textual options to numeric codes for each categorical variable
-job_options = {'management': 1, 'technician': 2, 'entrepreneur': 3, 'blue-collar': 4,
+    job_options = {'management': 1, 'technician': 2, 'entrepreneur': 3, 'blue-collar': 4,
                'unknown': 5, 'retired': 6, 'admin.': 7, 'services': 8, 'self-employed': 9,
                'unemployed': 10, 'housemaid': 11, 'student': 12}
-job_code = st.sidebar.selectbox("JOB", options=list(job_options.keys()), index=list(job_options.keys()).index(st.session_state.job_code), key="job")
+    job_code = st.sidebar.selectbox("JOB", options=list(job_options.keys()), index=list(job_options.keys()).index(st.session_state.job_code), key="job")
 
 # Similarly, add select boxes for other categorical variables
-marital_options = {'married': 1, 'single': 2, 'divorced': 3}
-marital_code = st.sidebar.selectbox("MARITAL", options=list(marital_options.keys()), index=list(marital_options.keys()).index(st.session_state.marital_code), key="marital")
+    marital_options = {'married': 1, 'single': 2, 'divorced': 3}
+    marital_code = st.sidebar.selectbox("MARITAL", options=list(marital_options.keys()), index=list(marital_options.keys()).index(st.session_state.marital_code), key="marital")
 
-education_options = {'tertiary': 1, 'secondary': 2, 'unknown': 3, 'primary': 4}
-education_code = st.sidebar.selectbox("EDUCATION", options=list(education_options.keys()), index=list(education_options.keys()).index(st.session_state.education_code), key="education")
+    education_options = {'tertiary': 1, 'secondary': 2, 'unknown': 3, 'primary': 4}
+    education_code = st.sidebar.selectbox("EDUCATION", options=list(education_options.keys()), index=list(education_options.keys()).index(st.session_state.education_code), key="education")
 
-housing_options = {'yes': 1, 'no': 0}
-housing_code = st.sidebar.selectbox("HOUSING", options=list(housing_options.keys()), index=list(housing_options.keys()).index(st.session_state.housing_code), key="housing")
+    housing_options = {'yes': 1, 'no': 0}
+    housing_code = st.sidebar.selectbox("HOUSING", options=list(housing_options.keys()), index=list(housing_options.keys()).index(st.session_state.housing_code), key="housing")
 
-default_options = {'yes': 1, 'no': 0}
-default_code = st.sidebar.selectbox("DEFAULT", options=list(default_options.keys()), index=list(default_options.keys()).index(st.session_state.default_code), key="default")
+    default_options = {'yes': 1, 'no': 0}
+    default_code = st.sidebar.selectbox("DEFAULT", options=list(default_options.keys()), index=list(default_options.keys()).index(st.session_state.default_code), key="default")
 
-loan_options = {'no': 0, 'yes': 1}
-loan_code = st.sidebar.selectbox("LOAN", options=list(loan_options.keys()), index=list(loan_options.keys()).index(st.session_state.loan_code), key="loan")
+    loan_options = {'no': 0, 'yes': 1}
+    loan_code = st.sidebar.selectbox("LOAN", options=list(loan_options.keys()), index=list(loan_options.keys()).index(st.session_state.loan_code), key="loan")
 
-contact_options = {'unknown': 0, 'cellular': 1, 'telephone': 2}
-contact_code = st.sidebar.selectbox("CONTACT", options=list(contact_options.keys()), index=list(contact_options.keys()).index(st.session_state.contact_code), key="contact")
+    contact_options = {'unknown': 0, 'cellular': 1, 'telephone': 2}
+    contact_code = st.sidebar.selectbox("CONTACT", options=list(contact_options.keys()), index=list(contact_options.keys()).index(st.session_state.contact_code), key="contact")
 
-month_options = {'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
+    month_options = {'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
                  'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12}
-month_code = st.sidebar.selectbox("MONTH", options=list(month_options.keys()), index=list(month_options.keys()).index(st.session_state.month_code), key="month")
+    month_code = st.sidebar.selectbox("MONTH", options=list(month_options.keys()), index=list(month_options.keys()).index(st.session_state.month_code), key="month")
 
-poutcome_options = {'failure': 0, 'other': 1, 'success': 2, 'unknown': 3}
-poutcome_code = st.sidebar.selectbox("POUTCOME", options=list(poutcome_options.keys()), index=list(poutcome_options.keys()).index(st.session_state.poutcome_code), key="poutcome")
+    poutcome_options = {'failure': 0, 'other': 1, 'success': 2, 'unknown': 3}
+    poutcome_code = st.sidebar.selectbox("POUTCOME", options=list(poutcome_options.keys()), index=list(poutcome_options.keys()).index(st.session_state.poutcome_code), key="poutcome")
 
     # Add a button to trigger the model prediction
     if st.button("Run Model"):
