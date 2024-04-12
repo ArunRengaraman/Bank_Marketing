@@ -29,7 +29,7 @@ def app():
     #st.write(f"## {dataset_name} Dataset")
 
     classifier_name = st.sidebar.selectbox(
-        'Select classifier', ('Random Forest','SVM','GB','XGBoost','MLP')
+        'Select classifier', ('Random Forest','SVM','XGBoost','MLP')
     )
 
     def get_dataset(name):
@@ -64,14 +64,6 @@ def app():
             params['n_estimators'] = n_estimators
             params['learning_rate'] = learning_rate
             params['max_depth'] = max_depth
-        elif clf_name == 'GB':
-            max_depth = st.sidebar.slider('max_depth (GB)', 2, 15)
-            n_estimators = st.sidebar.slider('n_estimators (GB)', 1, 100)
-            learning_rate = st.sidebar.slider(
-                'learning_rate (GB)', 0.01, 1.0, 0.1)
-            params['max_depth'] = max_depth
-            params['n_estimators'] = n_estimators
-            params['learning_rate'] = learning_rate
         elif clf_name == 'Random Forest':
             max_depth = st.sidebar.slider(
                 'max_depth (Random Forest)', 2, 15)
@@ -106,10 +98,6 @@ def app():
                                     learning_rate=params['learning_rate'], 
                                     max_depth=params['max_depth'], 
                                     random_state=1234)
-        elif clf_name == 'GB':
-            clf = GradientBoostingClassifier(
-                n_estimators=params['n_estimators'], max_depth=params['max_depth'],
-                learning_rate=params['learning_rate'], random_state=1234)
         elif clf_name == 'Random Forest':
             clf = RandomForestClassifier(
                 n_estimators=params['n_estimators'], max_depth=params['max_depth'],
