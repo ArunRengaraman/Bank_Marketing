@@ -87,6 +87,10 @@ def app():
             params['hidden_layer_sizes_3'] = hidden_layer_sizes_3
             params['activation'] = activation
             params['solver'] = solver
+        elif clf_name == 'Decision Tree':
+            max_depth = st.sidebar.slider(
+                max_depth (Decision Tree)', 1, 15)
+            params['max_depth'] = max_depth
         return params
 
     def get_classifier(clf_name, params):
@@ -106,6 +110,9 @@ def app():
             hidden_layer_sizes = (params['hidden_layer_sizes_1'], params['hidden_layer_sizes_2'], params['hidden_layer_sizes_3'])
             clf = MLPClassifier(hidden_layer_sizes=hidden_layer_sizes, activation=params['activation'],
                                 solver=params['solver'], random_state=42)
+        elif clf_name == 'Decision Tree':
+            clf = DecisionTreeClassifier(max_depth=params['max_depth'])
+            
         return clf
 
     # Obtain parameters
