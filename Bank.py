@@ -184,55 +184,6 @@ def app():
     poutcome_code = st.selectbox(
         "POUTCOME", options=list(poutcome_options.keys()))
 
-    if st.button("Fill Dropdown Values"):
-        st.session_state.job_code = 'management'
-        st.session_state.marital_code = 'married'
-        st.session_state.education_code = 'tertiary'
-        st.session_state.housing_code = 'yes'
-        st.session_state.default_code = 'no'
-        st.session_state.loan_code = 'no'
-        st.session_state.contact_code = 'cellular'
-        st.session_state.month_code = 'may'
-        st.session_state.poutcome_code = 'success'
-        st.session_state.age = 30
-        st.session_state.balance = 1000
-        st.session_state.day = 15
-        st.session_state.duration = 200
-        st.session_state.campaign = 2
-        st.session_state.pdays = 20
-        st.session_state.previous = 1
-
-    # Pre-fill values if available in session state
-    if 'job_code' in st.session_state:
-        job_code = st.session_state.job_code
-    if 'marital_code' in st.session_state:
-        marital_code = st.session_state.marital_code
-    if 'education_code' in st.session_state:
-        education_code = st.session_state.education_code
-    if 'housing_code' in st.session_state:
-        housing_code = st.session_state.housing_code
-    if 'default_code' in st.session_state:
-        default_code = st.session_state.default_code
-    if 'loan_code' in st.session_state:
-        loan_code = st.session_state.loan_code
-    if 'contact_code' in st.session_state:
-        contact_code = st.session_state.contact_code
-    if 'month_code' in st.session_state:
-        month_code = st.session_state.month_code
-    if 'poutcome_code' in st.session_state:
-        poutcome_code = st.session_state.poutcome_code
-
-    # Display dropdown menus with pre-filled values
-    job_code = st.sidebar.selectbox("JOB", options=list(job_options.keys()), index=list(job_options.keys()).index(job_code), key="job_code")
-    marital_code = st.sidebar.selectbox("MARITAL", options=list(marital_options.keys()), index=list(marital_options.keys()).index(marital_code), key="marital_code")
-    education_code = st.sidebar.selectbox("EDUCATION", options=list(education_options.keys()), index=list(education_options.keys()).index(education_code), key="education_code")
-    housing_code = st.sidebar.selectbox("HOUSING", options=list(housing_options.keys()), index=list(housing_options.keys()).index(housing_code), key="housing_code")
-    default_code = st.sidebar.selectbox("DEFAULT", options=list(default_options.keys()), index=list(default_options.keys()).index(default_code), key="default_code")
-    loan_code = st.sidebar.selectbox("LOAN", options=list(loan_options.keys()), index=list(loan_options.keys()).index(loan_code), key="loan_code")
-    contact_code = st.sidebar.selectbox("CONTACT", options=list(contact_options.keys()), index=list(contact_options.keys()).index(contact_code), key="contact_code")
-    month_code = st.sidebar.selectbox("MONTH", options=list(month_options.keys()), index=list(month_options.keys()).index(month_code), key="month_code")
-    poutcome_code = st.sidebar.selectbox("POUTCOME", options=list(poutcome_options.keys()), index=list(poutcome_options.keys()).index(poutcome_code), key="poutcome_code")
-
     # Add a button to trigger the model prediction
 
     if st.button("Run Model"):
