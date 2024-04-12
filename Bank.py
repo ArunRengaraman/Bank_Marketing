@@ -223,21 +223,16 @@ def app():
         poutcome_code = st.session_state.poutcome_code
 
     # Display dropdown menus with pre-filled values
-    job_code = st.selectbox("JOB", options=list(job_options.keys()), index=list(job_options.keys()).index(job_code))
-    marital_code = st.selectbox(
-        "MARITAL", options=list(marital_options.keys()), index=list(marital_options.keys()).index(marital_code))
-    education_code = st.selectbox(
-        "EDUCATION", options=list(education_options.keys()), index=list(education_options.keys()).index(education_code))
-    housing_code = st.selectbox(
-        "HOUSING", options=list(housing_options.keys()), index=list(housing_options.keys()).index(housing_code))
-    default_code = st.selectbox(
-        "DEFAULT", options=list(default_options.keys()), index=list(default_options.keys()).index(default_code))
-    loan_code = st.selectbox("LOAN", options=list(loan_options.keys()), index=list(loan_options.keys()).index(loan_code))
-    contact_code = st.selectbox(
-        "CONTACT", options=list(contact_options.keys()), index=list(contact_options.keys()).index(contact_code))
-    month_code = st.selectbox("MONTH", options=list(month_options.keys()), index=list(month_options.keys()).index(month_code))
-    poutcome_code = st.selectbox(
-        "POUTCOME", options=list(poutcome_options.keys()), index=list(poutcome_options.keys()).index(poutcome_code))
+    job_code = st.sidebar.selectbox("JOB", options=list(job_options.keys()), index=list(job_options.keys()).index(job_code), key="job_code")
+    marital_code = st.sidebar.selectbox("MARITAL", options=list(marital_options.keys()), index=list(marital_options.keys()).index(marital_code), key="marital_code")
+    education_code = st.sidebar.selectbox("EDUCATION", options=list(education_options.keys()), index=list(education_options.keys()).index(education_code), key="education_code")
+    housing_code = st.sidebar.selectbox("HOUSING", options=list(housing_options.keys()), index=list(housing_options.keys()).index(housing_code), key="housing_code")
+    default_code = st.sidebar.selectbox("DEFAULT", options=list(default_options.keys()), index=list(default_options.keys()).index(default_code), key="default_code")
+    loan_code = st.sidebar.selectbox("LOAN", options=list(loan_options.keys()), index=list(loan_options.keys()).index(loan_code), key="loan_code")
+    contact_code = st.sidebar.selectbox("CONTACT", options=list(contact_options.keys()), index=list(contact_options.keys()).index(contact_code), key="contact_code")
+    month_code = st.sidebar.selectbox("MONTH", options=list(month_options.keys()), index=list(month_options.keys()).index(month_code), key="month_code")
+    poutcome_code = st.sidebar.selectbox("POUTCOME", options=list(poutcome_options.keys()), index=list(poutcome_options.keys()).index(poutcome_code), key="poutcome_code")
+
     # Add a button to trigger the model prediction
 
     if st.button("Run Model"):
