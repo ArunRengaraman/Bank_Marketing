@@ -131,13 +131,15 @@ def app():
     y_pred = clf.predict(X_test)
 
     acc = accuracy_score(y_test, y_pred)
-    precesion = precision_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
     f1 = f1_score(y_test, y_pred)
-    st.write(f'Accuracy =', acc)
-    st.write(f'Precision =', acc)
-    st.write(f'Recall =', acc)
-    st.write(f'F1 score =', acc)
+
+    st.write(f'Accuracy = {acc}')
+    st.write(f'Precision = {precision}')
+    st.write(f'Recall = {recall}')
+    st.write(f'F1 score = {f1}')
+
    
 
     st.write('Enter the values for prediction')
