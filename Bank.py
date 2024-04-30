@@ -12,7 +12,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import roc_curve, auc
@@ -131,8 +131,14 @@ def app():
     y_pred = clf.predict(X_test)
 
     acc = accuracy_score(y_test, y_pred)
-
+    precesion = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
     st.write(f'Accuracy =', acc)
+    st.write(f'Precision =', acc)
+    st.write(f'Recall =', acc)
+    st.write(f'F1 score =', acc)
+   
 
     st.write('Enter the values for prediction')
     age = st.number_input("AGE",value=None, placeholder="Type a number...")
